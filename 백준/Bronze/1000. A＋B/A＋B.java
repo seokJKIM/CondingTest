@@ -10,9 +10,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
         tokens = new StringTokenizer(input.readLine());
 
-        int a = Integer.parseInt(tokens.nextToken());
-        int b = Integer.parseInt(tokens.nextToken());
-
-        System.out.println(a+b);
+        System.out.println(Integer.parseInt(tokens.nextToken())+Integer.parseInt(tokens.nextToken()));
     }
 }
