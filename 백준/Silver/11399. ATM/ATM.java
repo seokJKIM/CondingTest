@@ -1,32 +1,32 @@
-import java.util.*;
-public class Main {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		
-		int N = sc.nextInt();
-		
-		int[] arr = new int[N];
-		
-		for(int i=0; i<N; i++) {
-			arr[i] = sc.nextInt();
-		}
-		
-		Arrays.sort(arr);
-		
-		int[] sum = new int[N];
-		
-		sum[0] = arr[0];
-		for(int i=1; i<N; i++) {
-			sum[i] = sum[i-1]+arr[i];
-		}
-		
-		int result = 0;
-		
-		for(int i=0; i<N; i++) {
-			result += sum[i];
-		}
-		
-		System.out.println(result);
-	}
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.StringTokenizer;
 
+public class Main {
+    static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer tokens;
+    static int N, ans;
+    public static void main(String[] args) throws IOException {
+        N = Integer.parseInt(input.readLine());
+        ans = 0;
+        int[] arr = new int[N];
+
+        tokens = new StringTokenizer(input.readLine());
+
+        for(int i=0; i<N; i++){
+            arr[i] = Integer.parseInt(tokens.nextToken());
+        }
+
+        Arrays.sort(arr);
+
+        for(int i=0; i<arr.length; i++){
+            ans += arr[i]*(arr.length-i);
+        }
+
+        System.out.println(ans);
+    }
 }
