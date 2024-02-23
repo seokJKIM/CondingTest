@@ -5,7 +5,7 @@ class Solution {
         Arrays.sort(citations);
         
         for(int i=0; i<citations.length; i++){
-            if(citations.length-i <= citations[i]) {
+            if(citations[i] >= citations.length-i) {
                 answer = citations.length-i;
                 break;
             }
