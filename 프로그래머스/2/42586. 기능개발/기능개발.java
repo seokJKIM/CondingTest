@@ -1,42 +1,29 @@
 import java.util.*;
+
 class Solution {
-    public int[] solution(int[] progresses, int[] speeds) {
+    public ArrayList<Integer> solution(int[] progresses, int[] speeds) {
+        ArrayList<Integer> answer = new ArrayList<>();
         
-        Queue<Integer> queue = new LinkedList<Integer>();
-        int[] arr = new int[101];
-        for(int i=0; i<progresses.length; i++){
-            int day = 0;
-            int n = 100 - progresses[i];
-            if(n%speeds[i] == 0) day = n/speeds[i];
-            else day = n/speeds[i]+1;
+        int max = Integer.MIN_VALUE;
+        int[] arr = new int[progresses.length];
+        
+        int[] count = new int[101];
+        for(int i=0; i<arr.length; i++){
+            if((100-progresses[i])%speeds[i] == 0) arr[i] = (100-progresses[i])/speeds[i];
+            else arr[i] = (100-progresses[i])/speeds[i]+1;
+            if(max <= arr[i]){
+                max = arr[i];
+            }else{
+                arr[i] = max;
+            }
             
-            queue.add(day);
-            arr[day]++;
+            count[arr[i]]++;
         }
         
-        Queue<Integer> st = new LinkedList<Integer>();
-        
-        int num = queue.peek();
-   
-        int cnt = 0;
-        while(queue.size() > 0){
-            if(queue.peek() <= num) {
-                cnt++;
-                queue.poll();
-            } else {
-                st.add(cnt);
-                cnt = 1;
-                num = queue.poll();
-            }   
+        for(int i=0; i<count.length; i++){
+            if(count[i] != 0) answer.add(count[i]);
         }
         
-        st.add(cnt);
-        
-        int[] answer = new int[st.size()];
-        
-        for(int i=0; i<answer.length; i++){
-            answer[i] = st.poll();
-        }
         return answer;
     }
 }
