@@ -22,7 +22,7 @@ class Solution {
     public static void bfs(int[][] maps){
         q = new LinkedList<>();
         
-        q.add(new Point(0,0,1));
+        q.add(new Point(0,0));
         visited[0][0] = true;
         
         while(!q.isEmpty()){
@@ -30,7 +30,6 @@ class Solution {
             
             int r = p.r;
             int c = p.c;
-            int lv = p.lv;
             
             for(int i=0; i<4; i++){
                 int nr = r+deltas[i][0];
@@ -38,8 +37,8 @@ class Solution {
                 
                 if(isIn(nr, nc) && !visited[nr][nc] && maps[nr][nc] == 1){
                     visited[nr][nc] = true;
-                    maps[nr][nc] = lv+1;
-                    q.add(new Point(nr,nc,lv+1));
+                    maps[nr][nc] = maps[r][c]+1;
+                    q.add(new Point(nr,nc));
                 }
             }
         }
@@ -52,11 +51,9 @@ class Solution {
     public static class Point{
         int r;
         int c;
-        int lv;
-        public Point(int r, int c, int lv){
+        public Point(int r, int c){
             this.r = r;
             this.c = c;
-            this.lv = lv;
         }
     }
 }
