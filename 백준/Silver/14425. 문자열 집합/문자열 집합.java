@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.StringTokenizer;
 
 class Main {
@@ -17,14 +18,14 @@ class Main {
         M = Integer.parseInt(tokens.nextToken());
         cnt = 0;
 
-        ArrayList<String> list = new ArrayList<>();
+        HashSet<String> set = new HashSet<>();
 
         for(int i=0; i<N; i++){
-            list.add(input.readLine());
+            set.add(input.readLine());
         }
 
         for(int i=0; i<M; i++){
-            if(list.contains(input.readLine())) cnt++;
+            if(set.contains(input.readLine())) cnt++;
         }
 
         System.out.println(cnt);
