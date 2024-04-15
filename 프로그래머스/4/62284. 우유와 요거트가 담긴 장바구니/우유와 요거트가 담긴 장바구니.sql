@@ -1,0 +1,5 @@
+SELECT CART_ID
+FROM CART_PRODUCTS
+WHERE NAME = 'Milk' OR NAME = "Yogurt"
+GROUP BY CART_ID
+HAVING count(distinct name) >= 2;
