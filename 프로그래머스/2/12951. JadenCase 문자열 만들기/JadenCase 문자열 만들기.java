@@ -1,24 +1,28 @@
 import java.util.*;
+
 class Solution {
     public String solution(String s) {
         String answer = "";
-        
+        boolean check = true;
         s = s.toLowerCase();
         
-        boolean check = true;
-        
         for(int i=0; i<s.length(); i++){
-            if(check){
-                answer += s.substring(i,i+1).toUpperCase();
-                check = false;
-            } else{
-                    answer += s.substring(i,i+1);
-            }
             
-            if(s.substring(i,i+1).equals(" ")){
-                check = true;
+            String st = s.substring(i,i+1);
+            
+            if(st.equals(" ")){
+                answer += " ";
+                check = true; 
+            }else{
+               if(check){
+                   answer += st.toUpperCase();
+                   check = false;  
+               } else{
+                   answer += st;
+               }
             }
-        }
+        }       
+        
         return answer;
     }
 }
