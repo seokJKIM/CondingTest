@@ -1,22 +1,18 @@
 class Solution {
     public int[] solution(String s) {
+        int zeroCount = 0;
+        int count = 0;
         
-        int loopCnt=0;
-        int zeroCnt=0;
-        
-        while(!s.equals("1")){
+        while(s.length() > 1){
+            count++;
             String tmp = "";
             for(int i=0; i<s.length(); i++){
-                char c = s.charAt(i);
-                if(c == '1') tmp += c;
-                else zeroCnt++;
-            }
-            
+                if(s.charAt(i) == '1') tmp += "1";
+                else zeroCount++;
+            }            
             s = Integer.toBinaryString(tmp.length());
-            
-            loopCnt++;
         }
-        
-        return new int[] {loopCnt, zeroCnt};
+        int[] answer = {count, zeroCount};
+        return answer;
     }
 }
