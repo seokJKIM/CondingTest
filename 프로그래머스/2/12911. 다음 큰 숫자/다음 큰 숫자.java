@@ -1,29 +1,32 @@
+import java.util.*;
+
 class Solution {
     public int solution(int n) {
         int answer = 0;
-        int count = 1;
-        int cnt = 0;
+        int idx = 1;
+        int count = 0;
         
-        String st1 = Integer.toBinaryString(n);
+        String st = Integer.toBinaryString(n);
         
-        for(int i=0; i< st1.length(); i++){
-           if(st1.charAt(i) == '1') cnt++;
+        for(int i=0; i<st.length(); i++){
+            if(st.charAt(i)=='1') count++;    
         }
         
         while(true){
-           int number = n+count;
-           int one = 0;
-           String st2 = Integer.toBinaryString(number);
-           for(int i=0; i< st2.length(); i++){
-               if(st2.charAt(i) == '1') one++;
-           }
-
-           if(cnt == one){
-               answer = number;
-               break;
-           }
-           count++;
-       }
+            int tmp = n+idx;
+            int one = 0;
+            String tmpString = Integer.toBinaryString(tmp);
+            
+            for(int i=0; i<tmpString.length(); i++){
+                if(tmpString.charAt(i)=='1') one++;    
+            }
+            
+            if(one == count) {
+                answer = tmp;
+                break;
+            }
+            idx++;
+        }
         
         return answer;
     }
