@@ -5,7 +5,6 @@ class Solution
     public int solution(String s)
     {
         int answer = 0;
-
         Stack<Character> stack = new Stack<>();
         
         stack.push(s.charAt(0));
@@ -19,7 +18,6 @@ class Solution
             
             stack.push(s.charAt(i));
         }
-
         if(stack.isEmpty()) answer = 1;
         return answer;
     }
