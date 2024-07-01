@@ -1,20 +1,20 @@
 import java.util.*;
 
 public class Solution {
+    
     public int solution(int n) {
-        
-        return answer(n);
+        return dfs(n);
     }
     
-    public int answer(int n){
-        if(n==1){
+    public static int dfs(int n){
+        if(n == 1){
             return 1;
         }
         
         if(n%2 != 0){
-            return answer(n/2)+1;
+            return dfs(n/2)+1;
         }else{
-            return answer(n/2);
+            return dfs(n/2);
         }
     }
 }
