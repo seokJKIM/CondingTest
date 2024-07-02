@@ -1,23 +1,23 @@
-import java.util.Arrays;
+import java.util.*;
 
 class Solution {
     public int solution(int[] people, int limit) {
-		int answer = 0;
-		Arrays.sort(people);
-		int lidx = 0;
-        int ridx = people.length-1;
+        int answer = 0;
+        Arrays.sort(people);
         
-        while(lidx<=ridx){
-            if(people[lidx] + people[ridx] <= limit){
+        int left = 0;
+        int right = people.length-1;
+        
+        while(left <= right){
+            if(people[left] + people[right] <= limit){
                 answer++;
-                lidx++;
-                ridx--;
+                left++;
+                right--;
             }else{
                 answer++;
-                ridx--;
+                right--;
             }
         }
-        
         return answer;
     }
 }
